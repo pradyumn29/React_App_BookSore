@@ -1,6 +1,6 @@
 # React_App_BookSore
 
-for react app install:
+###for react app install:
 
  -npm install axios
  
@@ -11,7 +11,7 @@ for react app install:
  -create-react-app appName
 
 
- for express install:
+### for express install:
  
  -npm init (mandatory first step)
  
@@ -29,7 +29,7 @@ for react app install:
  
  -npm install express -g
 
- To run app:
+### To run app:
  
    in express cmd:
    
