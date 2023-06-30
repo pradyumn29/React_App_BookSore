@@ -1,6 +1,6 @@
 # React_App_BookSore
 
-###for react app install:
+### for react app install:
 
  -npm install axios
  
