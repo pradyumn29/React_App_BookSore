@@ -1,0 +1,139 @@
+<html>
+<head>
+    <style>
+        #err1{
+            color: red;
+        }
+        #err{
+            color: red;
+        }
+        #err2{
+            color: red;
+        }
+
+    </style>
+    <script>
+          //var arr=[{Name:"Ram",Roll:125,Gender:"Male",Skill:["c","java"],location:"pune",Birthdate:"2000-12-12"
+        var arr=[{Name:"Ram",Roll:2,Gender:"male",Skill:["java"],location:"jsp",BirthDate:"2000-03-01"}]
+        function validate(){
+            var A=validateName(document.getElementById('name').value,'err1')
+           // alert("validated name")
+            var B=validateRol(document.getElementById('roll').value,'err')
+           // alert("validated roll")
+            var dt=document.getElementById('date').value;
+            var dt1=new Date(dt);
+            var bt=new Date()
+            var c1=bt.getFullYear()-dt1.getFullYear();
+            var C=validateDate(c1,'err2')
+
+            if(A && B && C){
+                var N=document.getElementById("name").value;
+                var R=document.getElementById("roll").value;
+                var G=document.getElementById("gender").value;
+                var skill=document.getElementsByName("skill").value;
+                var location=document.getElementsByName("location").value;
+                var Bi=document.getElementById("BirthDate").value;
+  
+                for(var i=0;i<skill.length;i++){
+                    if(skill[i].checked){
+                        var s=skill[i].value;
+                    }
+                }
+                for(var j=0;j<location.length;j++){
+                    if(location[j].checked){
+                        var l=location[j].value;
+                    }
+                }
+                 
+                var ar={Name:Name,Roll:R,Gender:G,Skill:s,location:l,BirthDate:Bi}
+                arr.push(ar);
+                document.getElementsById("table").innerHTML=ar;
+                var str=""
+                for(var i=0;i<arr.length;i++){
+                   str+="<tr><td>"+arr[i].Name+"<td>"+arr[i].Roll+"<td>"+arr[i].Gender+"<td>"+arr[i].Skill+"<td>"+arr[i].location+"<td>"+arr[i].BirthDate+"<tr><td>"
+                }
+                   document.getElementById("table").innerHTML=str;
+
+
+            }
+        }
+
+       function validateName(name,err1){
+        if(name!==" "&& isNaN(name) && name.length>5){
+            return true;
+        }else{
+           // alert("should not be blank/should not be number/should be greater than 5")
+            document.getElementById(err1).innerHTML="should not be blank/should not be number/should be greater than 5"
+            return false;
+
+        }
+
+        }
+
+        function validateRol(roll,err){
+            if(roll===" " || isNaN(roll)){
+              //  alert("not blank / should be a number")
+                document.getElementById(err).innerHTML="should be a number"
+                return false;
+            }else{
+
+                return true;
+            }
+
+        }
+        function validateDate(date,err2){
+           // alert("as")
+                //   var dt=new Date(date)
+                  var pattern="/^(=?*.[a-zA-Z])(=?*./d)(?[!@#$%^&]).{8,})$/";
+               
+                  if(date>21 && date!==" "){
+                    alert("yreu")
+                    return true;
+                  }else{
+                    alert("date should be less")
+                    document.getElementById(err2).innerHTML="date should be valid"
+                    return false;
+                  }
+        }
+    </script>
+</head>
+<body>
+     <table  border="1">
+        <tr>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Gender</th>
+            <th>Skill</th>
+            <th>Location</th>
+            <th>Date</th>
+           
+        </tr>
+        <tr id="table">
+            <td></td>
+        </tr>
+     </table>
+
+    <Fieldset>
+        <legend><h3>Student Form</h3></legend>
+    <form action="">
+    Name:<input type="text" id="name" name="nm"><span>*</span><span id="err1"></span><br>
+    Roll:<input type="text" id="roll" name="roll"><span>*</span><span id="err"></span><br>
+    Gender :<br>male<input type="radio" id="male" name="Gender">female<input type="radio" id="female" name="Gender"><br>
+    Skill: <br>C-Program<input type="radio" id="c" name="Skill">Java<input type="radio" id="java" name="Skill">Python<input type="radio" id="python" name="Skill"><br>
+    Location: <select id="location">
+        <option>select City</option>
+        <option value="jsp">jsp</option>
+        <option value="ichal">ichal</option>
+        <option value="pune">pune</option>
+    </select><br>
+    Date:<br>
+    Birthdate:<input type="date" id="date" name="date"><span>*</span><span id="err2"></span><br>
+
+    <button type="button" id="add" name="add" onclick="validate()">Add Student</button>
+</Fieldset>
+</form>
+<div id="mydiv">
+
+</div>
+</body>
+</html>
